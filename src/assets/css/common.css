@@ -1,0 +1,255 @@
+/*
+ * @Descriptions:公共js
+ * @Autho: WangZhenHao
+ * @Date: 2020-12-19 18:09:34
+ * @LastEditTime: 2020-12-19 18:12:11
+ */
+/**
+公共css模块
+
+created 2020-7-17 18:12
+author  wangzhenhao
+
+*/
+
+/**--------------现在全局公共样式-----------------*/
+.p-ten {
+  padding: 15px;
+}
+
+.p-t-ten {
+  padding-top: 15px;
+}
+
+.p-l-ten {
+  padding-left: 15px;
+}
+
+.p-r-ten {
+  padding-right: 15px;
+}
+
+.p-b-ten {
+  padding-bottom: 15px;
+}
+.p-l-five {
+  padding-left: 7px;
+}
+.p-t-five {
+  padding-top: 7px;
+}
+.p-b-five {
+  padding-bottom: 7px;
+}
+.m-b-ten {
+  margin-bottom: 15px;
+}
+
+.m-r-ten {
+  margin-right: 15px;
+}
+
+.m-t-ten {
+  margin-top: 15px;
+}
+
+.m-l-ten {
+  margin-left: 15px;
+}
+.m-b-five {
+  margin-bottom: 7px;
+}
+.m-t-five {
+  margin-top: 7px;
+}
+
+.flex-box {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.items-center {
+  align-items: center;
+}
+.items-start {
+  align-items: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-s-b {
+  justify-content: space-between;
+}
+
+.justify-s-a {
+  justify-content: space-around;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.overflew {
+  overflow: hidden;
+}
+
+.nowrap{
+  white-space: nowrap;
+}
+
+.font-b {
+  font-weight: 700;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.height-100 {
+  height: 100%;
+}
+
+.bg-f {
+  background: #fff;
+}
+
+.bg-f5 {
+  background: #F5F5F5;
+}
+
+.bg-main {
+  background: #3366FF;
+}
+
+.color-f {
+  color: #fff;
+}
+
+.color-0 {
+  color: #000;
+}
+.color-3 {
+  color: #333;
+}
+
+.color-6 {
+  color: #666;
+}
+
+.color-9 {
+  color: #999
+}
+
+.color-main {
+  color: #3366FF;
+}
+
+.color-money {
+  color: #E73F29;
+}
+.font-0 {
+  font-size: 0;
+}
+.font-14 {
+  font-size: 14px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+.font-18 {
+  font-size: 18px;
+}
+.font-24 {
+  font-size: 24px;
+}
+
+.font-12 {
+  font-size: 12px;
+}
+
+.rel {
+  position: relative;
+}
+
+.abs {
+  position: absolute;
+}
+
+
+.fixed {
+  position: fixed;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text_over {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.text_over_3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.text-th {
+  text-decoration: line-through;
+}
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+display: none;
+}
+/**--------------现在全局公共样式-----------------*/
+.no-touch {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.border-bottom {
+  position: relative;
+}
+.border-bottom::after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  border-bottom: 1px solid #d9d9d9;
+  color: #d9d9d9;
+  transform: scaleY(.5);
+}
