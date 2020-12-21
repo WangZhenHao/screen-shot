@@ -36,7 +36,9 @@ export default {
       // const y = wrap.offsetTop;
       // console.log(x, y);
       console.log(this.$refs.wechart);
-      html2canvas(this.$refs.wechart.$el, {}).then(canvas => {
+      html2canvas(this.$refs.wechart.$el, {
+        allowTaint: true
+      }).then(canvas => {
         this.dialogVisible = true;
         this.$nextTick(() => {
           this.$refs.imageWrap.appendChild(canvas);

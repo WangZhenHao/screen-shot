@@ -1,44 +1,100 @@
 <template>
   <div class="wechat-wrap">
-    <div class="flex-box wechat-list right justify-end rel">
-      <div class="right-desc bg-f rel">
-        <div class="right-triangle"></div>
-        <div>傻亮</div>
-      </div>
-      <img class="right-header" src="@/assets/image/home/me.jpg" />
-    </div>
-    <div class="flex-box wechat-list left rel">
-      <img class="left-header" src="@/assets/image/home/you.jpg" />
+    <!-- <div class="flex-box wechat-list left rel">
+      <img class="left-header" src="@/assets/image/home/1.jpg" />
       <div class="left-desc bg-f rel">
         <div class="left-triangle"></div>
-        <div>在，找我有什么事呢</div>
-      </div>
-    </div>
-    <div class="flex-box wechat-list right justify-end rel">
-      <div class="right-desc bg-f rel">
-        <div class="right-triangle"></div>
-        <div>你是真的傻</div>
-      </div>
-      <img class="right-header" src="@/assets/image/home/me.jpg" />
-    </div>
-    <div class="flex-box wechat-list left rel">
-      <img class="left-header" src="@/assets/image/home/you.jpg" />
-      <div class="left-desc bg-f rel">
-        <div class="left-triangle"></div>
-        <div>嗯嗯，不要和其他人说哦!</div>
+        <div>怎么样，跟我玩？我吃屎的时候，你们还在喝奶呢！</div>
       </div>
     </div>
     <div class="flex-box wechat-list left rel">
-      <img class="left-header" src="@/assets/image/home/you.jpg" />
+      <img class="left-header" src="@/assets/image/home/1.jpg" />
       <div class="left-desc bg-f rel">
         <div class="left-triangle"></div>
-        <div>眼圈都黑，转了5k给一个妹子，裸聊不成，反而被骗了</div>
+        <div>
+          告诉你，屎我天天吃，现在根本没有人放在眼里，狗都怕我。和我玩？还嫩着呢
+        </div>
       </div>
     </div>
+    <div class="flex-box wechat-list left rel">
+      <img class="left-header" src="@/assets/image/home/1.jpg" />
+      <div class="left-desc bg-f rel">
+        <div class="left-triangle"></div>
+        <div>
+          回家好好吃饭，喝水去，这个世界的屎我说了算。。。
+        </div>
+      </div>
+    </div> -->
+    <template v-for="(item, index) in list">
+      <div
+        :key="index"
+        v-if="item.role === 1"
+        class="flex-box wechat-list right justify-end rel"
+      >
+        <div class="right-desc bg-f rel">
+          <div class="right-triangle"></div>
+          <div>{{ item.desc }}</div>
+        </div>
+        <img class="right-header" :src="item.header" />
+      </div>
+      <div
+        :key="index"
+        v-else-if="item.role === 0"
+        class="flex-box wechat-list left rel"
+      >
+        <img class="left-header" :src="item.header" />
+        <div class="left-desc bg-f rel">
+          <div class="left-triangle"></div>
+          <div>
+            {{ item.desc }}
+          </div>
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props: {
+    list: {
+      type: Array,
+      default() {
+        return [
+          {
+            role: 0,
+            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
+            desc: "怎么样，跟我玩？我吃屎的时候，你们还在喝奶呢！"
+          },
+          {
+            role: 0,
+            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
+            desc:
+              "告诉你，屎我天天吃，现在根本没有人放在眼里，狗都怕我。和我玩？还嫩着呢"
+          },
+          {
+            role: 0,
+            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
+            desc: "回家好好吃饭，喝水去，这个世界的屎我说了算。。。"
+          },
+
+          {
+            role: 1,
+            header: "https://s3.ax1x.com/2020/12/21/rBBKkd.jpg",
+            desc: "嗯嗯，好的，我去吃宵夜去了"
+          },
+          {
+            role: 0,
+            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
+            desc: "去吧，屎都是我的，你耗子尾汁，好好反省"
+          }
+        ];
+      }
+    }
+  },
+  data() {
+    return {};
+  }
+};
 </script>
 <style lang="scss" scoped>
 .wechat-wrap {
@@ -47,7 +103,7 @@ export default {};
   font-size: 28px;
   background: #ebebeb;
   padding: 26px 25px;
-  // transform: scale(0.5);
+  transform: scale(0.5);
   color: #000;
   .wechat-list {
     margin-bottom: 26px;
@@ -65,18 +121,10 @@ export default {};
     border-radius: 10px;
     font-size: 28px;
     max-width: 552px;
-    // &::after {
-    //   position: absolute;
-    //   width: 24px;
-    //   height: 24px;
-    //   background: url(../images/rec-txt-bg.png) 1px -31px no-repeat;
-    //   left: -24px;
-    //   top: 27px;
-    // }
   }
   .left-triangle {
     position: absolute;
-    left: -25px;
+    left: -24px;
     top: 27px;
     width: 24px;
     height: 24px;
@@ -111,7 +159,7 @@ export default {};
   }
   .right-triangle {
     position: absolute;
-    right: -24px;
+    right: -23px;
     top: 27px;
     width: 24px;
     height: 24px;
