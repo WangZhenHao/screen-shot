@@ -1,6 +1,6 @@
 // const merge = require('webpack-merge')
 const path = require("path");
-const pxtorem = require("postcss-pxtorem");
+// const pxtorem = require("postcss-pxtorem");
 // const config  = require('./src/config')
 // console.log(config)
 // const proxy = require('./src/config/proxy')
@@ -86,27 +86,27 @@ module.exports = {
       priority: -10,
       chunks: "all"
     };
-  },
-  css: {
-    loaderOptions: {
-      less: {
-        // 若使用 less-loader@5，请移除 lessOptions 这一级，直接配置选项。
-        lessOptions: {
-          modifyVars: {
-            // 或者可以通过 less 文件覆盖（文件路径为绝对路径）
-            // hack: `true; @import "${resolve("./src/assets/css/var.less")}";`
-          }
-        }
-      },
-      postcss: {
-        plugins: [
-          // 把px单位换算成rem单位
-          pxtorem({
-            rootValue: 100, // 换算的基数(设计图750的根字体为32)
-            selectorBlackList: [".ig-"] // 要忽略的选择器并保留为px。
-          })
-        ]
-      }
-    }
   }
+  // css: {
+  //   loaderOptions: {
+  //     less: {
+  //       // 若使用 less-loader@5，请移除 lessOptions 这一级，直接配置选项。
+  //       lessOptions: {
+  //         modifyVars: {
+  //           // 或者可以通过 less 文件覆盖（文件路径为绝对路径）
+  //           hack: `true; @import "${resolve("./src/assets/css/var.less")}";`
+  //         }
+  //       }
+  //     },
+  //     postcss: {
+  //       plugins: [
+  //         // 把px单位换算成rem单位
+  //         pxtorem({
+  //           rootValue: 100, // 换算的基数(设计图750的根字体为32)
+  //           selectorBlackList: [".ig-"] // 要忽略的选择器并保留为px。
+  //         })
+  //       ]
+  //     }
+  //   }
+  // }
 };

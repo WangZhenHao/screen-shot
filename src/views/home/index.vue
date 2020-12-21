@@ -1,11 +1,7 @@
 <template>
   <div class="home">
     <button @click="screenShot">点击截屏</button>
-    <div class="screent-wrap">
-      <h1>1</h1>
-      <h1>2</h1>
-      <h1>3</h1>
-    </div>
+    <wechart ref="wechart"></wechart>
 
     <el-dialog title="提示" :visible.sync="dialogVisible" width="60%">
       <div ref="imageWrap"></div>
@@ -21,10 +17,13 @@
 
 <script>
 import html2canvas from "html2canvas";
+import wechart from "./components/wechact.vue";
 
 export default {
   name: "Home",
-  components: {},
+  components: {
+    wechart
+  },
   data: function() {
     return {
       dialogVisible: false
@@ -32,7 +31,12 @@ export default {
   },
   methods: {
     screenShot() {
-      html2canvas(document.querySelector(".screent-wrap")).then(canvas => {
+      // let wrap = document.querySelector(".screent-wrap");
+      // const x = wrap.offsetLeft;
+      // const y = wrap.offsetTop;
+      // console.log(x, y);
+      console.log(this.$refs.wechart);
+      html2canvas(this.$refs.wechart.$el, {}).then(canvas => {
         this.dialogVisible = true;
         this.$nextTick(() => {
           this.$refs.imageWrap.appendChild(canvas);
@@ -42,11 +46,4 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-.screent-wrap {
-  width: 750px;
-  height: 1000px;
-  margin: 0 auto;
-  background: red;
-}
-</style>
+<style lang="scss" scoped></style>

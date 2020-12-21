@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view />
   </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+body {
+  width: 1200px;
+  margin: 0 auto;
+}
+// 滚动条的宽度
+</style>

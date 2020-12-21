@@ -2,7 +2,7 @@
  * @Descriptions:公共js
  * @Autho: WangZhenHao
  * @Date: 2020-12-19 18:09:34
- * @LastEditTime: 2020-12-19 18:12:11
+ * @LastEditTime: 2020-12-21 17:02:53
  */
 /**
 公共css模块
@@ -11,6 +11,14 @@ created 2020-7-17 18:12
 author  wangzhenhao
 
 */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body::-webkit-scrollbar {
+  width: 0;
+}
 
 /**--------------现在全局公共样式-----------------*/
 .p-ten {
@@ -68,6 +76,7 @@ author  wangzhenhao
   display: -webkit-box;
   display: -webkit-flex;
 }
+
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -84,6 +93,10 @@ author  wangzhenhao
 }
 .items-start {
   align-items: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .justify-center {
