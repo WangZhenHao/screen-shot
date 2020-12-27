@@ -1,15 +1,20 @@
 <template>
   <div class="home">
-    <!-- <el-button :loading="loading" type="primary" @click="screenShot"
-      >点击截屏</el-button
-    > -->
     <div class="flex-box">
-      <wechart ref="wechart"></wechart>
-      <div class="home-right">
-        <dialog-plate></dialog-plate>
-        <el-button :loading="loading" type="primary" @click="screenShot"
-          >点击截屏</el-button
-        >
+      <wechart :list="list" ref="wechart"></wechart>
+      <div class="home-right p-l-ten">
+        <dialog-plate :role="1" @add-content="addContentHandel"></dialog-plate>
+        <dialog-plate
+          class="p-t-ten"
+          :role="0"
+          @add-content="addContentHandel"
+        ></dialog-plate>
+        <div class="p-t-ten">
+          <el-button :loading="loading" type="success" @click="screenShot"
+            >生成截屏</el-button
+          >
+          <el-button @click="clearAll">清空截屏信息</el-button>
+        </div>
       </div>
     </div>
 
@@ -39,17 +44,31 @@ export default {
   data: function() {
     return {
       dialogVisible: false,
-      loading: false
+      loading: false,
+      list: []
     };
   },
   methods: {
+    addContentHandel(e) {
+      this.list.push(e);
+    },
     close() {
       this.dialogVisible = false;
       setTimeout(() => {
         this.$refs.imageWrap.innerHTML = "";
-      }, 1000);
+      }, 500);
+    },
+    clearAll() {
+      this.list = [];
     },
     screenShot() {
+      if (!this.list.length) {
+        this.$message({
+          message: "请先输入内容",
+          type: "warning"
+        });
+        return;
+      }
       const newNode = this.cloneNode(this.$refs.wechart.wechatWrap);
 
       this.loading = true;
@@ -59,10 +78,9 @@ export default {
         this.dialogVisible = true;
         this.loading = false;
 
-        document.body.removeChild(newNode);
-
         this.$nextTick(() => {
           this.$refs.imageWrap.appendChild(canvas);
+          document.body.removeChild(newNode);
         });
       });
     },

@@ -2,7 +2,7 @@
   <div ref="wechart" class="rel wechart">
     <div ref="wechatWrap" class="wechat-wrap">
       <div class="wechart-title"></div>
-      <template v-for="(item, index) in list">
+      <template v-for="(item, index) in contentList">
         <div
           :key="index"
           v-if="item.role === 1"
@@ -10,6 +10,9 @@
         >
           <div class="right-desc bg-f rel">
             <div class="right-triangle"></div>
+            <div data-html2canvas-ignore class="content-options right-options">
+              <i @click="delContent(index)" class="el-icon-delete"></i>
+            </div>
             <div>{{ item.desc }}</div>
           </div>
           <img class="right-header" :src="item.header" />
@@ -22,6 +25,9 @@
           <img class="left-header" :src="item.header" />
           <div class="left-desc bg-f rel">
             <div class="left-triangle"></div>
+            <div data-html2canvas-ignore class="content-options left-options">
+              <i @click="delContent(index)" class="el-icon-delete"></i>
+            </div>
             <div>
               {{ item.desc }}
             </div>
@@ -38,132 +44,31 @@ export default {
     list: {
       type: Array,
       default() {
-        return [
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc: "怎么样，跟我玩？我吃屎的时候，你们还在喝奶呢！"
-          },
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc:
-              "告诉你，屎我天天吃，现在根本没有人放在眼里，狗都怕我。和我玩？还嫩着呢"
-          },
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc: "回家好好吃饭，喝水去，这个世界的屎我说了算。。。"
-          },
-
-          {
-            role: 1,
-            header: "https://s3.ax1x.com/2020/12/21/rBBKkd.jpg",
-            desc: "嗯嗯，好的，我去吃宵夜去了"
-          },
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc: "去吧，屎都是我的，你耗子尾汁，好好反省"
-          },
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc: "怎么样，跟我玩？我吃屎的时候，你们还在喝奶呢！"
-          },
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc:
-              "告诉你，屎我天天吃，现在根本没有人放在眼里，狗都怕我。和我玩？还嫩着呢"
-          },
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc: "回家好好吃饭，喝水去，这个世界的屎我说了算。。。"
-          },
-
-          {
-            role: 1,
-            header: "https://s3.ax1x.com/2020/12/21/rBBKkd.jpg",
-            desc: "嗯嗯，好的，我去吃宵夜去了"
-          },
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc: "去吧，屎都是我的，你耗子尾汁，好好反省"
-          },
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc: "怎么样，跟我玩？我吃屎的时候，你们还在喝奶呢！"
-          },
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc:
-              "告诉你，屎我天天吃，现在根本没有人放在眼里，狗都怕我。和我玩？还嫩着呢"
-          },
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc: "回家好好吃饭，喝水去，这个世界的屎我说了算。。。"
-          },
-
-          {
-            role: 1,
-            header: "https://s3.ax1x.com/2020/12/21/rBBKkd.jpg",
-            desc: "嗯嗯，好的，我去吃宵夜去了"
-          },
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc: "去吧，屎都是我的，你耗子尾汁，好好反省"
-          },
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc: "去吧，屎都是我的，你耗子尾汁，好好反省"
-          },
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc: "怎么样，跟我玩？我吃屎的时候，你们还在喝奶呢！"
-          },
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc:
-              "告诉你，屎我天天吃，现在根本没有人放在眼里，狗都怕我。和我玩？还嫩着呢"
-          },
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc: "回家好好吃饭，喝水去，这个世界的屎我说了算。。。"
-          },
-
-          {
-            role: 1,
-            header: "https://s3.ax1x.com/2020/12/21/rBBKkd.jpg",
-            desc: "嗯嗯，好的，我去吃宵夜去了"
-          },
-          {
-            role: 0,
-            header: "https://s3.ax1x.com/2020/12/21/rBB1pt.jpg",
-            desc: "去吧，屎都是我的，你耗子尾汁，好好反省"
-          }
-        ];
+        return [];
       }
     }
   },
+  watch: {
+    list: {
+      handler(newVal) {
+        this.contentList = newVal;
+      },
+      deep: true
+    }
+  },
   data() {
-    return {};
+    return {
+      contentList: []
+    };
   },
   mounted() {
     this.wechart = this.$refs.wechart;
     this.wechatWrap = this.$refs.wechatWrap;
-
-    console.log(this.wechatWrap.scrollHeight);
+  },
+  methods: {
+    delContent(index) {
+      this.contentList.splice(index, 1);
+    }
   }
 };
 </script>
@@ -202,6 +107,17 @@ export default {
     border-radius: 10px;
     font-size: 28px;
     max-width: 552px;
+  }
+
+  .content-options {
+    position: absolute;
+    cursor: pointer;
+  }
+  .right-options {
+    left: -54px;
+  }
+  .left-options {
+    right: -54px;
   }
   .left-triangle {
     position: absolute;
