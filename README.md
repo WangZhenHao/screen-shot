@@ -5,6 +5,8 @@
 参考网站
 http://www.12tool.com/wxduihua.html
 
+http://html2canvas.hertzen.com/documentation
+
 ```
 ## Project setup
 ```

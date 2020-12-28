@@ -1,51 +1,66 @@
 <template>
-  <div ref="wechart" class="rel wechart">
+  <div ref="wechat" class="rel wechat">
     <div ref="wechatWrap" class="wechat-wrap">
-      <div class="wechart-title"></div>
-      <template v-for="(item, index) in contentList">
-        <div
-          :key="index"
-          v-if="item.role === 1"
-          class="flex-box wechat-list right justify-end rel"
-        >
-          <div class="right-desc bg-f rel">
-            <div class="right-triangle"></div>
-            <div data-html2canvas-ignore class="content-options right-options">
-              <i @click="delContent(index)" class="el-icon-delete"></i>
+      <wechat-title :title="title"></wechat-title>
+      <div class="wechat-content">
+        <template v-for="(item, index) in contentList">
+          <div
+            :key="index"
+            v-if="item.role === 1"
+            class="flex-box wechat-list right justify-end rel"
+          >
+            <div class="right-desc bg-f rel">
+              <div class="right-triangle"></div>
+              <div
+                data-html2canvas-ignore
+                class="content-options right-options"
+              >
+                <i @click="delContent(index)" class="el-icon-delete"></i>
+              </div>
+              <div>{{ item.desc }}</div>
             </div>
-            <div>{{ item.desc }}</div>
+            <img class="right-header" :src="item.header" />
           </div>
-          <img class="right-header" :src="item.header" />
-        </div>
-        <div
-          :key="index"
-          v-else-if="item.role === 0"
-          class="flex-box wechat-list left rel"
-        >
-          <img class="left-header" :src="item.header" />
-          <div class="left-desc bg-f rel">
-            <div class="left-triangle"></div>
-            <div data-html2canvas-ignore class="content-options left-options">
-              <i @click="delContent(index)" class="el-icon-delete"></i>
-            </div>
-            <div>
-              {{ item.desc }}
+          <div
+            :key="index"
+            v-else-if="item.role === 0"
+            class="flex-box wechat-list left rel"
+          >
+            <img class="left-header" :src="item.header" />
+            <div class="left-desc bg-f rel">
+              <div class="left-triangle"></div>
+              <div data-html2canvas-ignore class="content-options left-options">
+                <i @click="delContent(index)" class="el-icon-delete"></i>
+              </div>
+              <div>
+                {{ item.desc }}
+              </div>
             </div>
           </div>
-        </div>
-      </template>
-      <div class="wechart-footer"></div>
+        </template>
+      </div>
+      <wechat-footer></wechat-footer>
     </div>
   </div>
 </template>
 <script>
+import wechatTitle from "./wechatTitle";
+import wechatFooter from "./wechatFooter";
+
 export default {
+  components: {
+    wechatTitle,
+    wechatFooter
+  },
   props: {
     list: {
       type: Array,
       default() {
         return [];
       }
+    },
+    title: {
+      type: String
     }
   },
   watch: {
@@ -53,7 +68,8 @@ export default {
       handler(newVal) {
         this.contentList = newVal;
       },
-      deep: true
+      deep: true,
+      immediate: true
     }
   },
   data() {
@@ -62,7 +78,7 @@ export default {
     };
   },
   mounted() {
-    this.wechart = this.$refs.wechart;
+    this.wechat = this.$refs.wechat;
     this.wechatWrap = this.$refs.wechatWrap;
   },
   methods: {
@@ -72,11 +88,13 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-.wechart {
+<style lang="scss">
+.wechat {
   width: 375px;
   height: 100vh;
   max-height: 667px;
+
+  // min-height: 667px;
 }
 .wechat-wrap {
   position: absolute;
@@ -85,12 +103,20 @@ export default {
   width: 750px;
   font-size: 28px;
   background: #ebebeb;
-  padding: 26px 25px;
   height: calc(100% * 2);
-
   overflow: auto;
   transform: scale(0.5);
   color: #000;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  .wechat-content {
+    padding: 26px 25px 0;
+    // margin-top: 26px;
+    min-height: calc(100% - 112px - 88px);
+  }
   .wechat-list {
     margin-bottom: 26px;
   }

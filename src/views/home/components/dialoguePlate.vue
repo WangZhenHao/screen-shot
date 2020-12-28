@@ -82,7 +82,7 @@ export default {
         role: this.role
       });
 
-      this.desc = "";
+      // this.desc = "";
     },
     changeHandle(e) {
       const url = this.getObjectURL(e.target.files[0]);

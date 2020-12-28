@@ -1,14 +1,20 @@
 <template>
   <div class="home">
     <div class="flex-box">
-      <wechart :list="list" ref="wechart"></wechart>
+      <wechart :list="list" :title="title" ref="wechart"></wechart>
       <div class="home-right p-l-ten">
-        <dialog-plate :role="1" @add-content="addContentHandel"></dialog-plate>
+        <dialog-wetchat-title v-model="title"></dialog-wetchat-title>
+        <dialog-plate
+          class="p-t-ten"
+          :role="1"
+          @add-content="addContentHandel"
+        ></dialog-plate>
         <dialog-plate
           class="p-t-ten"
           :role="0"
           @add-content="addContentHandel"
         ></dialog-plate>
+
         <div class="p-t-ten">
           <el-button :loading="loading" type="success" @click="screenShot"
             >生成截屏</el-button
@@ -32,6 +38,7 @@
 
 <script>
 import html2canvas from "html2canvas";
+import dialogWetchatTitle from "./components/dialogWetchatTitle.vue";
 import dialogPlate from "./components/dialoguePlate.vue";
 import wechart from "./components/wechact.vue";
 
@@ -39,14 +46,130 @@ export default {
   name: "Home",
   components: {
     wechart,
-    dialogPlate
+    dialogPlate,
+    dialogWetchatTitle
   },
   data: function() {
     return {
       dialogVisible: false,
       loading: false,
-      list: []
+      title: "微信对话制作",
+      list: [
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试1"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试2"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试3"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试4"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试5"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试6"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试7"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试8"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试9"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试10"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试11"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试12"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试13"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试14"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试15"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试16"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试17"
+        // },
+        // {
+        //   role: 1,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   desc: "测试18"
+        // }
+      ]
     };
+  },
+  watch: {
+    title(e) {
+      console.log(e);
+    }
   },
   methods: {
     addContentHandel(e) {
@@ -62,13 +185,13 @@ export default {
       this.list = [];
     },
     screenShot() {
-      if (!this.list.length) {
-        this.$message({
-          message: "请先输入内容",
-          type: "warning"
-        });
-        return;
-      }
+      // if (!this.list.length) {
+      //   this.$message({
+      //     message: "请先输入内容",
+      //     type: "warning"
+      //   });
+      //   return;
+      // }
       const newNode = this.cloneNode(this.$refs.wechart.wechatWrap);
 
       this.loading = true;
