@@ -3,6 +3,7 @@
     <div class="flex-box">
       <wechart :list="list" :title="title" ref="wechart"></wechart>
       <div class="home-right p-l-ten">
+        <dialog-nar-bar></dialog-nar-bar>
         <dialog-wetchat-title v-model="title"></dialog-wetchat-title>
         <dialog-plate
           class="p-t-ten"
@@ -40,6 +41,7 @@
 import html2canvas from "html2canvas";
 import dialogWetchatTitle from "./components/dialogWetchatTitle.vue";
 import dialogPlate from "./components/dialoguePlate.vue";
+import dialogNarBar from "./components/dialogNarBar.vue";
 import wechart from "./components/wechact.vue";
 
 export default {
@@ -47,7 +49,8 @@ export default {
   components: {
     wechart,
     dialogPlate,
-    dialogWetchatTitle
+    dialogWetchatTitle,
+    dialogNarBar
   },
   data: function() {
     return {

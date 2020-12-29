@@ -1,6 +1,7 @@
 <template>
   <div ref="wechat" class="rel wechat">
     <div ref="wechatWrap" class="wechat-wrap">
+      <phone-nav-bar></phone-nav-bar>
       <wechat-title :title="title"></wechat-title>
       <div class="wechat-content">
         <template v-for="(item, index) in contentList">
@@ -44,13 +45,15 @@
   </div>
 </template>
 <script>
+import phoneNavBar from "./phoneNavBar";
 import wechatTitle from "./wechatTitle";
 import wechatFooter from "./wechatFooter";
 
 export default {
   components: {
     wechatTitle,
-    wechatFooter
+    wechatFooter,
+    phoneNavBar
   },
   props: {
     list: {
@@ -93,8 +96,7 @@ export default {
   width: 375px;
   height: 100vh;
   max-height: 667px;
-
-  // min-height: 667px;
+  min-height: 667px;
 }
 .wechat-wrap {
   position: absolute;
@@ -115,7 +117,7 @@ export default {
   .wechat-content {
     padding: 26px 25px 0;
     // margin-top: 26px;
-    min-height: calc(100% - 112px - 88px);
+    min-height: calc(100% - 112px - 88px - 40px);
   }
   .wechat-list {
     margin-bottom: 26px;
