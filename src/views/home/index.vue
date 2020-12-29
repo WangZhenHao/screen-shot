@@ -25,13 +25,16 @@
       </div>
     </div>
 
-    <el-dialog title="提示" :visible.sync="dialogVisible" width="60%">
+    <el-dialog
+      title="提示"
+      :before-close="close"
+      :visible.sync="dialogVisible"
+      width="60%"
+    >
       <div ref="imageWrap"></div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="close">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false"
-          >确 定</el-button
-        >
+        <el-button type="primary" @click="close">确 定</el-button>
       </span>
     </el-dialog>
   </div>
