@@ -62,11 +62,19 @@ export default {
       title: "微信对话制作",
       list: [
         // {
+        //   role: 0,
+        //   header:
+        //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
+        //   type: 1,
+        //   receipted: "send"
+        // },
+        // {
         //   role: 1,
         //   header:
         //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
-        //   desc: "测试1"
-        // },
+        //   type: 1,
+        //   receipted: "receive"
+        // }
         // {
         //   role: 1,
         //   header:

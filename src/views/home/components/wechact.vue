@@ -6,8 +6,73 @@
       <div class="wechat-content">
         <template v-for="(item, index) in contentList">
           <div
+            v-if="item.type === 1 && item.role === 0"
+            class="flex-box wechat-list left rel"
             :key="index"
-            v-if="item.role === 1"
+          >
+            <img class="left-header" :src="item.header" />
+            <div class="left-desc bg-f rel receipted">
+              <div class="left-triangle"></div>
+              <div data-html2canvas-ignore class="content-options left-options">
+                <i @click="delContent(index)" class="el-icon-delete"></i>
+              </div>
+              <div class="receipted-detail flex-box items-center">
+                <div class="receipted-image-wrap">
+                  <img
+                    class="width-100 height-100"
+                    src="@/assets/image/home/icon/receipted.png"
+                  />
+                </div>
+                <div class="receipted-desc color-f">
+                  <div>¥{{ item.money }}</div>
+                  <div class="font-26">
+                    {{ item.receipted === "send" ? "已被领取" : "已领取" }}
+                  </div>
+                </div>
+              </div>
+              <div class="receipt width-100 bg-f">
+                <!-- {{ item.desc }} -->
+                微信转账
+              </div>
+            </div>
+          </div>
+          <div
+            :key="index"
+            v-else-if="item.type === 1 && item.role === 1"
+            class="flex-box wechat-list right justify-end rel"
+          >
+            <div class="right-desc bg-f rel receipted">
+              <div class="right-triangle"></div>
+              <div
+                data-html2canvas-ignore
+                class="content-options right-options"
+              >
+                <i @click="delContent(index)" class="el-icon-delete"></i>
+              </div>
+              <div class="receipted-detail flex-box items-center">
+                <div class="receipted-image-wrap">
+                  <img
+                    class="width-100 height-100"
+                    src="@/assets/image/home/icon/receipted.png"
+                  />
+                </div>
+                <div class="receipted-desc color-f">
+                  <div>¥{{ item.money }}</div>
+                  <div class="font-26">
+                    {{ item.receipted === "send" ? "已被领取" : "已领取" }}
+                  </div>
+                </div>
+              </div>
+              <div class="receipt width-100 bg-f">
+                <!-- {{ item.desc }} -->
+                微信转账
+              </div>
+            </div>
+            <img class="right-header" :src="item.header" />
+          </div>
+          <div
+            :key="index"
+            v-else-if="item.role === 1"
             class="flex-box wechat-list right justify-end rel"
           >
             <div class="right-desc bg-f rel">
@@ -98,6 +163,7 @@ export default {
   max-height: 667px;
   min-height: 667px;
 }
+
 .wechat-wrap {
   position: absolute;
   left: calc(-750px / 2 / 2);
@@ -113,7 +179,9 @@ export default {
     width: 0;
     height: 0;
   }
-
+  .font-26 {
+    font-size: 26px;
+  }
   .wechat-content {
     padding: 26px 25px 0;
     // margin-top: 26px;
@@ -122,6 +190,7 @@ export default {
   .wechat-list {
     margin-bottom: 26px;
   }
+
   .left-header,
   .right-header {
     height: 82px;
@@ -175,13 +244,13 @@ export default {
       background: #fff;
     }
   }
-  .right {
-    .right-desc {
-      margin-right: 18px;
-      margin-left: 0px;
-      background: #95ec69;
-    }
+  // .right {
+  .right-desc {
+    margin-right: 18px;
+    margin-left: 0px;
+    background: #95ec69;
   }
+  // }
   .right-triangle {
     position: absolute;
     right: -23px;
@@ -208,6 +277,49 @@ export default {
       left: 3px;
       border-radius: 100%;
       background: #95ec69;
+    }
+  }
+  .receipted {
+    height: 146px;
+    width: 440px;
+    background: #fce1c3;
+    padding: 0;
+    .receipted-detail {
+      height: calc(100% - 38px);
+    }
+    .receipted-image-wrap {
+      width: 65px;
+      height: 65px;
+      background: #fff;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      margin-left: 26px;
+      margin-right: 14px;
+    }
+    .receipt {
+      height: 38px;
+      font-size: 22px;
+      line-height: 38px;
+      padding-left: 24px;
+      color: #b2b2b2;
+      border-radius: 0 0 10px 10px;
+    }
+  }
+  .receipted .left-triangle {
+    &::before {
+      border-color: transparent #fce1c3 transparent transparent;
+    }
+    &::after {
+      background: #fce1c3;
+    }
+  }
+  .receipted .right-triangle {
+    &::before {
+      border-color: transparent transparent transparent#fce1c3;
+    }
+
+    &::after {
+      background: #fce1c3;
     }
   }
 }

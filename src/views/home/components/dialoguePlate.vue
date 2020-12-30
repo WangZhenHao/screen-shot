@@ -11,13 +11,13 @@
           type="file"
         />
         <img
+          :src="url"
           class="upload-header-img abs width-100 height-100"
           v-show="url"
-          :src="url"
         />
         <div
-          v-show="!url"
           class="upload-tips text-center abs width-100 height-100"
+          v-show="!url"
         >
           <i class="el-icon-upload"></i>
         </div>
@@ -27,19 +27,50 @@
         <div class="font-14">聊天内容:</div>
         <div class="area-wrap p-l-five">
           <el-input
-            type="textarea"
             laceholder="请输入内容"
-            v-model="desc"
             style="height: 82px;"
+            type="textarea"
+            v-model="desc"
           ></el-input>
         </div>
       </div>
     </div>
     <div>
-      <el-button class="m-t-five" type="primary" @click="addContent"
+      <el-button @click="addContent" class="m-t-five" type="primary"
         >生成信息</el-button
       >
-      <el-button class="m-t-five" @click="clearContent">清空聊天框</el-button>
+      <el-button @click="clearContent" class="m-t-five">清空聊天框</el-button>
+    </div>
+    <div class="p-t-ten">
+      <div class="font-14">转账设置：</div>
+      <div>
+        <el-input
+          placeholder="请输入转账金额"
+          style="width: 100px;"
+          v-model="money"
+        ></el-input>
+        <span class="p-l-five">元</span>
+        <span class="p-l-ten">
+          <el-button
+            @click="addRedPacket(1, 'receive')"
+            class="m-t-five"
+            type="primary"
+            >已领取转账</el-button
+          >
+          <el-button
+            @click="addRedPacket(1, 'send')"
+            class="m-t-five"
+            type="primary"
+            >已被领取转账</el-button
+          >
+          <el-button
+            @click="addRedPacket(2, 'send')"
+            class="m-t-five"
+            type="primary"
+            >未领取转账</el-button
+          >
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -54,12 +85,37 @@ export default {
   data() {
     return {
       url: "",
-      desc: ""
+      desc: "",
+      money: ""
     };
   },
   methods: {
     clearContent() {
       this.url = this.desc = "";
+    },
+    addRedPacket(type, receipted) {
+      if (!this.url) {
+        this.$message({
+          message: "请上传头像",
+          type: "warning"
+        });
+        return;
+      } else if (!this.money) {
+        this.$message({
+          message: "请输入金额",
+          type: "warning"
+        });
+
+        return;
+      }
+
+      this.$emit("add-content", {
+        header: this.url,
+        type,
+        role: this.role,
+        receipted,
+        money: Number(this.money).toFixed(2)
+      });
     },
     addContent() {
       if (!this.url) {
@@ -79,7 +135,8 @@ export default {
       this.$emit("add-content", {
         header: this.url,
         desc: this.desc,
-        role: this.role
+        role: this.role,
+        type: 0
       });
 
       // this.desc = "";
