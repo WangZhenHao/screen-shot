@@ -196,6 +196,7 @@ export default {
       }, 500);
     },
     clearAll() {
+      this.title = "";
       this.list = [];
     },
     screenShot() {

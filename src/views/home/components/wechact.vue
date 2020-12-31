@@ -6,7 +6,72 @@
       <div class="wechat-content">
         <template v-for="(item, index) in contentList">
           <div
-            v-if="item.type === 1 && item.role === 0"
+            v-if="item.type === 2 && item.role === 0"
+            class="flex-box wechat-list left rel"
+            :key="index"
+          >
+            <img class="left-header" :src="item.header" />
+            <div class="left-desc bg-f rel receipted unreceipted">
+              <div class="left-triangle"></div>
+              <div data-html2canvas-ignore class="content-options left-options">
+                <i @click="delContent(index)" class="el-icon-delete"></i>
+              </div>
+              <div class="receipted-detail flex-box items-center">
+                <div class="receipted-image-wrap">
+                  <img
+                    class="width-100 height-100"
+                    src="@/assets/image/home/icon/transfer.png"
+                  />
+                </div>
+                <div class="receipted-desc color-f">
+                  <div>¥{{ item.money }}</div>
+                  <div class="font-24">
+                    {{ "转账给" + title }}
+                  </div>
+                </div>
+              </div>
+              <div class="receipt width-100 bg-f">
+                <!-- {{ item.desc }} -->
+                微信转账
+              </div>
+            </div>
+          </div>
+          <div
+            :key="index"
+            v-else-if="item.type === 2 && item.role === 1"
+            class="flex-box wechat-list right justify-end rel"
+          >
+            <div class="right-desc bg-f rel receipted unreceipted">
+              <div class="right-triangle"></div>
+              <div
+                data-html2canvas-ignore
+                class="content-options right-options"
+              >
+                <i @click="delContent(index)" class="el-icon-delete"></i>
+              </div>
+              <div class="receipted-detail flex-box items-center">
+                <div class="receipted-image-wrap">
+                  <img
+                    class="width-100 height-100"
+                    src="@/assets/image/home/icon/transfer.png"
+                  />
+                </div>
+                <div class="receipted-desc color-f">
+                  <div>¥{{ item.money }}</div>
+                  <div class="font-24">
+                    {{ "转账给" + title }}
+                  </div>
+                </div>
+              </div>
+              <div class="receipt width-100 bg-f">
+                <!-- {{ item.desc }} -->
+                微信转账
+              </div>
+            </div>
+            <img class="right-header" :src="item.header" />
+          </div>
+          <div
+            v-else-if="item.type === 1 && item.role === 0"
             class="flex-box wechat-list left rel"
             :key="index"
           >
@@ -25,7 +90,7 @@
                 </div>
                 <div class="receipted-desc color-f">
                   <div>¥{{ item.money }}</div>
-                  <div class="font-26">
+                  <div class="font-24">
                     {{ item.receipted === "send" ? "已被领取" : "已领取" }}
                   </div>
                 </div>
@@ -58,7 +123,7 @@
                 </div>
                 <div class="receipted-desc color-f">
                   <div>¥{{ item.money }}</div>
-                  <div class="font-26">
+                  <div class="font-24">
                     {{ item.receipted === "send" ? "已被领取" : "已领取" }}
                   </div>
                 </div>
@@ -179,8 +244,8 @@ export default {
     width: 0;
     height: 0;
   }
-  .font-26 {
-    font-size: 26px;
+  .font-24 {
+    font-size: 24px;
   }
   .wechat-content {
     padding: 26px 25px 0;
@@ -298,7 +363,7 @@ export default {
     }
     .receipt {
       height: 38px;
-      font-size: 22px;
+      font-size: 20px;
       line-height: 38px;
       padding-left: 24px;
       color: #b2b2b2;
@@ -320,6 +385,30 @@ export default {
 
     &::after {
       background: #fce1c3;
+    }
+  }
+  .unreceipted {
+    background: #fa9e3b;
+    .receipted-image-wrap {
+      background: transparent;
+    }
+  }
+
+  .unreceipted .left-triangle {
+    &::before {
+      border-color: transparent #fa9e3b transparent transparent;
+    }
+    &::after {
+      background: #fa9e3b;
+    }
+  }
+  .unreceipted .right-triangle {
+    &::before {
+      border-color: transparent transparent transparent#fa9e3b;
+    }
+
+    &::after {
+      background: #fa9e3b;
     }
   }
 }
