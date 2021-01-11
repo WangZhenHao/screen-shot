@@ -52,25 +52,54 @@
         <span class="p-l-five">元</span>
         <span class="p-l-ten">
           <el-button
-            @click="addRedPacket(1, 'receive')"
+            @click="addTransferAccounts(1, 'receive')"
             class="m-t-five"
             type="primary"
             >已领取转账</el-button
           >
           <el-button
-            @click="addRedPacket(1, 'send')"
+            @click="addTransferAccounts(1, 'send')"
             class="m-t-five"
             type="primary"
             >已被领取转账</el-button
           >
           <el-button
-            @click="addRedPacket(2, 'send')"
+            @click="addTransferAccounts(2, 'send')"
             class="m-t-five"
             type="primary"
             >未领取转账</el-button
           >
         </span>
       </div>
+    </div>
+    <div class="p-t-ten">
+      <div class="font-14">红包设置：</div>
+      <el-input
+        placeholder="请输入转账金额"
+        style="width: 100px;"
+        v-model="redPaketMoney"
+      ></el-input>
+      <span class="p-l-five">元</span>
+      <span class="p-l-ten">
+        <el-button
+          @click="addTransferAccounts(1, 'receive')"
+          class="m-t-five"
+          type="primary"
+          >已领取转账</el-button
+        >
+        <el-button
+          @click="addTransferAccounts(1, 'send')"
+          class="m-t-five"
+          type="primary"
+          >已被领取转账</el-button
+        >
+        <el-button
+          @click="addTransferAccounts(2, 'send')"
+          class="m-t-five"
+          type="primary"
+          >未领取转账</el-button
+        >
+      </span>
     </div>
   </div>
 </template>
@@ -86,14 +115,15 @@ export default {
     return {
       url: "",
       desc: "",
-      money: ""
+      money: "",
+      redPaketMoney: ""
     };
   },
   methods: {
     clearContent() {
       this.url = this.desc = "";
     },
-    addRedPacket(type, receipted) {
+    addTransferAccounts(type, receipted) {
       if (!this.url) {
         this.$message({
           message: "请上传头像",
