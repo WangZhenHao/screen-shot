@@ -2,18 +2,27 @@
  * @Descriptions:   
  * @Autho: WangZhenHao
  * @Date: 2020-12-29 10:47:10
- * @LastEditTime: 2020-12-29 20:50:22
+ * @LastEditTime: 2021-02-23 14:19:20
 -->
 <template>
   <div class="nav-bar flex-box items-center justify-s-b">
     <div class="nav-bar__left flex-box items-center">
-      <img class="sigan m-l-12" src="@/assets/image/home/icon/signal5.png" />
+      <img
+        class="sigan m-l-12"
+        src="@/assets/image/home/icon/signal5.png"
+      />
       <span class="font-22 m-l-12">中国电信</span>
-      <img class="wifi m-l-12" src="@/assets/image/home/icon/nw-wifi.png" />
+      <img
+        class="wifi m-l-12"
+        src="@/assets/image/home/icon/nw-wifi.png"
+      />
     </div>
     <div class="nav-bar__middle text-center">10:59</div>
     <div class="nav-bar__right flex-box items-center justify-end">
-      <img class="rotate m-l-12" src="@/assets/image/home/icon/i-top-dir.png" />
+      <img
+        class="rotate m-l-12"
+        src="@/assets/image/home/icon/i-top-dir.png"
+      />
       <span class="font-24 m-l-12">50%</span>
       <div class="electric rel">
         <span class="electric-proress abs">

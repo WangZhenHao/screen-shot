@@ -1,11 +1,14 @@
 <template>
-  <div class="flex-box p-t-five" placeholder="请输入对话框标题">
+  <div
+    class="flex-box p-t-five"
+    placeholder="请输入对话框标题"
+  >
     <div class="color-6">对话框标题:</div>
     <el-input
-      style="width: 243px;margin-left: 77px;"
       :value="value"
       @input="changeHandle"
       clearable
+      style="width: 243px;margin-left: 77px;"
     ></el-input>
   </div>
 </template>
@@ -14,18 +17,18 @@ export default {
   props: {
     value: {
       type: String,
-      default: ""
-    }
+      default: '',
+    },
   },
   data() {
     return {
-      text: ""
+      text: '',
     };
   },
   methods: {
     changeHandle(e) {
-      this.$emit("input", e);
-    }
-  }
+      this.$emit('input', e);
+    },
+  },
 };
 </script>

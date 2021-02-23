@@ -1,65 +1,77 @@
 <template>
   <div class="home">
     <div class="flex-box">
-      <wechart :list="list" :title="title" ref="wechart"></wechart>
+      <wechart
+        :list="list"
+        :title="title"
+        ref="wechart"
+      ></wechart>
       <div class="home-right p-l-ten">
         <dialog-nar-bar></dialog-nar-bar>
         <dialog-wetchat-title v-model="title"></dialog-wetchat-title>
         <dialog-plate
-          class="p-t-ten"
           :role="1"
           @add-content="addContentHandel"
+          class="p-t-ten"
         ></dialog-plate>
         <dialog-plate
-          class="p-t-ten"
           :role="0"
           @add-content="addContentHandel"
+          class="p-t-ten"
         ></dialog-plate>
 
         <div class="p-t-ten">
-          <el-button :loading="loading" type="success" @click="screenShot"
-            >生成截屏</el-button
-          >
+          <el-button
+            :loading="loading"
+            @click="screenShot"
+            type="success"
+          >生成截屏</el-button>
           <el-button @click="clearAll">清空截屏信息</el-button>
         </div>
       </div>
     </div>
 
     <el-dialog
-      title="提示"
       :before-close="close"
       :visible.sync="dialogVisible"
+      title="提示"
       width="60%"
     >
       <div ref="imageWrap"></div>
-      <span slot="footer" class="dialog-footer">
+      <span
+        class="dialog-footer"
+        slot="footer"
+      >
         <el-button @click="close">取 消</el-button>
-        <el-button type="primary" @click="close">确 定</el-button>
+        <el-button
+          @click="close"
+          type="primary"
+        >确 定</el-button>
       </span>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import html2canvas from "html2canvas";
-import dialogWetchatTitle from "./components/dialogWetchatTitle.vue";
-import dialogPlate from "./components/dialoguePlate.vue";
-import dialogNarBar from "./components/dialogNarBar.vue";
-import wechart from "./components/wechact.vue";
+import html2canvas from 'html2canvas';
+import dialogWetchatTitle from './components/dialogWetchatTitle.vue';
+import dialogPlate from './components/dialoguePlate.vue';
+import dialogNarBar from './components/dialogNarBar.vue';
+import wechart from './components/wechact.vue';
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     wechart,
     dialogPlate,
     dialogWetchatTitle,
-    dialogNarBar
+    dialogNarBar,
   },
-  data: function() {
+  data: function () {
     return {
       dialogVisible: false,
       loading: false,
-      title: "微信对话制作",
+      title: '微信对话制作',
       list: [
         // {
         //   role: 0,
@@ -177,13 +189,13 @@ export default {
         //     "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3225172089,2012026749&fm=15&gp=0.jpg",
         //   desc: "测试18"
         // }
-      ]
+      ],
     };
   },
   watch: {
     title(e) {
       console.log(e);
-    }
+    },
   },
   methods: {
     addContentHandel(e) {
@@ -192,11 +204,11 @@ export default {
     close() {
       this.dialogVisible = false;
       setTimeout(() => {
-        this.$refs.imageWrap.innerHTML = "";
+        this.$refs.imageWrap.innerHTML = '';
       }, 500);
     },
     clearAll() {
-      this.title = "";
+      this.title = '';
       this.list = [];
     },
     screenShot() {
@@ -211,8 +223,8 @@ export default {
 
       this.loading = true;
       html2canvas(newNode, {
-        allowTaint: true
-      }).then(canvas => {
+        allowTaint: true,
+      }).then((canvas) => {
         this.dialogVisible = true;
         this.loading = false;
 
@@ -224,15 +236,15 @@ export default {
     },
     cloneNode(node) {
       const newNode = node.cloneNode(true);
-      newNode.style.height = node.scrollHeight + "px";
-      newNode.style.position = "fixed";
-      newNode.style.left = 9999 + "px";
-      newNode.style.transform = "unset";
+      newNode.style.height = node.scrollHeight + 'px';
+      newNode.style.position = 'fixed';
+      newNode.style.left = 9999 + 'px';
+      newNode.style.transform = 'unset';
       document.body.appendChild(newNode);
 
       return newNode;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

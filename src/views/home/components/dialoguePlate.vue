@@ -1,8 +1,6 @@
 <template>
   <div class="color-6">
-    <div class="p-b-five">
-      {{ this.role === 1 ? "我的聊天框" : "她/他的聊天框" }}
-    </div>
+    <div class="p-b-five">{{ this.role === 1 ? "我的聊天框" : "她/他的聊天框" }}</div>
     <div class="flex-box">
       <div class="upload-header rel">
         <input
@@ -36,10 +34,15 @@
       </div>
     </div>
     <div>
-      <el-button @click="addContent" class="m-t-five" type="primary"
-        >生成信息</el-button
-      >
-      <el-button @click="clearContent" class="m-t-five">清空聊天框</el-button>
+      <el-button
+        @click="addContent"
+        class="m-t-five"
+        type="primary"
+      >生成信息</el-button>
+      <el-button
+        @click="clearContent"
+        class="m-t-five"
+      >清空聊天框</el-button>
     </div>
     <div class="p-t-ten">
       <div class="font-14">转账设置：</div>
@@ -55,20 +58,17 @@
             @click="addTransferAccounts(1, 'receive')"
             class="m-t-five"
             type="primary"
-            >已领取转账</el-button
-          >
+          >已领取转账</el-button>
           <el-button
             @click="addTransferAccounts(1, 'send')"
             class="m-t-five"
             type="primary"
-            >已被领取转账</el-button
-          >
+          >已被领取转账</el-button>
           <el-button
             @click="addTransferAccounts(2, 'send')"
             class="m-t-five"
             type="primary"
-            >未领取转账</el-button
-          >
+          >未领取转账</el-button>
         </span>
       </div>
     </div>
@@ -85,20 +85,17 @@
           @click="addTransferAccounts(1, 'receive')"
           class="m-t-five"
           type="primary"
-          >已领取转账</el-button
-        >
+        >已领取转账</el-button>
         <el-button
           @click="addTransferAccounts(1, 'send')"
           class="m-t-five"
           type="primary"
-          >已被领取转账</el-button
-        >
+        >已被领取转账</el-button>
         <el-button
           @click="addTransferAccounts(2, 'send')"
           class="m-t-five"
           type="primary"
-          >未领取转账</el-button
-        >
+        >未领取转账</el-button>
       </span>
     </div>
   </div>
@@ -109,64 +106,64 @@ export default {
     role: Number,
     default() {
       return 1;
-    }
+    },
   },
   data() {
     return {
-      url: "",
-      desc: "",
-      money: "",
-      redPaketMoney: ""
+      url: '',
+      desc: '',
+      money: '',
+      redPaketMoney: '',
     };
   },
   methods: {
     clearContent() {
-      this.url = this.desc = "";
+      this.url = this.desc = '';
     },
     addTransferAccounts(type, receipted) {
       if (!this.url) {
         this.$message({
-          message: "请上传头像",
-          type: "warning"
+          message: '请上传头像',
+          type: 'warning',
         });
         return;
       } else if (!this.money) {
         this.$message({
-          message: "请输入金额",
-          type: "warning"
+          message: '请输入金额',
+          type: 'warning',
         });
 
         return;
       }
 
-      this.$emit("add-content", {
+      this.$emit('add-content', {
         header: this.url,
         type,
         role: this.role,
         receipted,
-        money: Number(this.money).toFixed(2)
+        money: Number(this.money).toFixed(2),
       });
     },
     addContent() {
       if (!this.url) {
         this.$message({
-          message: "请上传头像",
-          type: "warning"
+          message: '请上传头像',
+          type: 'warning',
         });
         return;
       } else if (!this.desc) {
         this.$message({
-          message: "请输入内容",
-          type: "warning"
+          message: '请输入内容',
+          type: 'warning',
         });
         return;
       }
 
-      this.$emit("add-content", {
+      this.$emit('add-content', {
         header: this.url,
         desc: this.desc,
         role: this.role,
-        type: 0
+        type: 0,
       });
 
       // this.desc = "";
@@ -188,8 +185,8 @@ export default {
         url = window.webkitURL.createObjectURL(file);
       }
       return url;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

@@ -2,7 +2,7 @@
  * @Descriptions: 
  * @Autho: WangZhenHao
  * @Date: 2020-12-28 17:19:44
- * @LastEditTime: 2020-12-28 18:49:27
+ * @LastEditTime: 2021-02-23 14:19:36
 -->
 <template>
   <div class="wechat-title flex-box items-center justify-s-b">
@@ -19,9 +19,9 @@
 export default {
   props: {
     title: {
-      type: String
-    }
-  }
+      type: String,
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

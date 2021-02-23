@@ -1,20 +1,35 @@
 <template>
-  <div ref="wechat" class="rel wechat">
-    <div ref="wechatWrap" class="wechat-wrap">
+  <div
+    class="rel wechat"
+    ref="wechat"
+  >
+    <div
+      class="wechat-wrap"
+      ref="wechatWrap"
+    >
       <phone-nav-bar></phone-nav-bar>
       <wechat-title :title="title"></wechat-title>
       <div class="wechat-content">
         <template v-for="(item, index) in contentList">
           <div
-            v-if="item.type === 2 && item.role === 0"
-            class="flex-box wechat-list left rel"
             :key="index"
+            class="flex-box wechat-list left rel"
+            v-if="item.type === 2 && item.role === 0"
           >
-            <img class="left-header" :src="item.header" />
+            <img
+              :src="item.header"
+              class="left-header"
+            />
             <div class="left-desc bg-f rel receipted unreceipted">
               <div class="left-triangle"></div>
-              <div data-html2canvas-ignore class="content-options left-options">
-                <i @click="delContent(index)" class="el-icon-delete"></i>
+              <div
+                class="content-options left-options"
+                data-html2canvas-ignore
+              >
+                <i
+                  @click="delContent(index)"
+                  class="el-icon-delete"
+                ></i>
               </div>
               <div class="receipted-detail flex-box items-center">
                 <div class="receipted-image-wrap">
@@ -25,9 +40,7 @@
                 </div>
                 <div class="receipted-desc color-f">
                   <div>¥{{ item.money }}</div>
-                  <div class="font-24">
-                    {{ "转账给" + title }}
-                  </div>
+                  <div class="font-24">{{ "转账给" + title }}</div>
                 </div>
               </div>
               <div class="receipt width-100 bg-f">
@@ -38,16 +51,19 @@
           </div>
           <div
             :key="index"
-            v-else-if="item.type === 2 && item.role === 1"
             class="flex-box wechat-list right justify-end rel"
+            v-else-if="item.type === 2 && item.role === 1"
           >
             <div class="right-desc bg-f rel receipted unreceipted">
               <div class="right-triangle"></div>
               <div
-                data-html2canvas-ignore
                 class="content-options right-options"
+                data-html2canvas-ignore
               >
-                <i @click="delContent(index)" class="el-icon-delete"></i>
+                <i
+                  @click="delContent(index)"
+                  class="el-icon-delete"
+                ></i>
               </div>
               <div class="receipted-detail flex-box items-center">
                 <div class="receipted-image-wrap">
@@ -58,9 +74,7 @@
                 </div>
                 <div class="receipted-desc color-f">
                   <div>¥{{ item.money }}</div>
-                  <div class="font-24">
-                    {{ "转账给" + title }}
-                  </div>
+                  <div class="font-24">{{ "转账给" + title }}</div>
                 </div>
               </div>
               <div class="receipt width-100 bg-f">
@@ -68,18 +82,30 @@
                 微信转账
               </div>
             </div>
-            <img class="right-header" :src="item.header" />
+            <img
+              :src="item.header"
+              class="right-header"
+            />
           </div>
           <div
-            v-else-if="item.type === 1 && item.role === 0"
-            class="flex-box wechat-list left rel"
             :key="index"
+            class="flex-box wechat-list left rel"
+            v-else-if="item.type === 1 && item.role === 0"
           >
-            <img class="left-header" :src="item.header" />
+            <img
+              :src="item.header"
+              class="left-header"
+            />
             <div class="left-desc bg-f rel receipted">
               <div class="left-triangle"></div>
-              <div data-html2canvas-ignore class="content-options left-options">
-                <i @click="delContent(index)" class="el-icon-delete"></i>
+              <div
+                class="content-options left-options"
+                data-html2canvas-ignore
+              >
+                <i
+                  @click="delContent(index)"
+                  class="el-icon-delete"
+                ></i>
               </div>
               <div class="receipted-detail flex-box items-center">
                 <div class="receipted-image-wrap">
@@ -90,9 +116,7 @@
                 </div>
                 <div class="receipted-desc color-f">
                   <div>¥{{ item.money }}</div>
-                  <div class="font-24">
-                    {{ item.receipted === "send" ? "已被领取" : "已领取" }}
-                  </div>
+                  <div class="font-24">{{ item.receipted === "send" ? "已被领取" : "已领取" }}</div>
                 </div>
               </div>
               <div class="receipt width-100 bg-f">
@@ -103,16 +127,19 @@
           </div>
           <div
             :key="index"
-            v-else-if="item.type === 1 && item.role === 1"
             class="flex-box wechat-list right justify-end rel"
+            v-else-if="item.type === 1 && item.role === 1"
           >
             <div class="right-desc bg-f rel receipted">
               <div class="right-triangle"></div>
               <div
-                data-html2canvas-ignore
                 class="content-options right-options"
+                data-html2canvas-ignore
               >
-                <i @click="delContent(index)" class="el-icon-delete"></i>
+                <i
+                  @click="delContent(index)"
+                  class="el-icon-delete"
+                ></i>
               </div>
               <div class="receipted-detail flex-box items-center">
                 <div class="receipted-image-wrap">
@@ -123,9 +150,7 @@
                 </div>
                 <div class="receipted-desc color-f">
                   <div>¥{{ item.money }}</div>
-                  <div class="font-24">
-                    {{ item.receipted === "send" ? "已被领取" : "已领取" }}
-                  </div>
+                  <div class="font-24">{{ item.receipted === "send" ? "已被领取" : "已领取" }}</div>
                 </div>
               </div>
               <div class="receipt width-100 bg-f">
@@ -133,39 +158,55 @@
                 微信转账
               </div>
             </div>
-            <img class="right-header" :src="item.header" />
+            <img
+              :src="item.header"
+              class="right-header"
+            />
           </div>
           <div
             :key="index"
-            v-else-if="item.role === 1"
             class="flex-box wechat-list right justify-end rel"
+            v-else-if="item.role === 1"
           >
             <div class="right-desc bg-f rel">
               <div class="right-triangle"></div>
               <div
-                data-html2canvas-ignore
                 class="content-options right-options"
+                data-html2canvas-ignore
               >
-                <i @click="delContent(index)" class="el-icon-delete"></i>
+                <i
+                  @click="delContent(index)"
+                  class="el-icon-delete"
+                ></i>
               </div>
               <div>{{ item.desc }}</div>
             </div>
-            <img class="right-header" :src="item.header" />
+            <img
+              :src="item.header"
+              class="right-header"
+            />
           </div>
           <div
             :key="index"
-            v-else-if="item.role === 0"
             class="flex-box wechat-list left rel"
+            v-else-if="item.role === 0"
           >
-            <img class="left-header" :src="item.header" />
+            <img
+              :src="item.header"
+              class="left-header"
+            />
             <div class="left-desc bg-f rel">
               <div class="left-triangle"></div>
-              <div data-html2canvas-ignore class="content-options left-options">
-                <i @click="delContent(index)" class="el-icon-delete"></i>
+              <div
+                class="content-options left-options"
+                data-html2canvas-ignore
+              >
+                <i
+                  @click="delContent(index)"
+                  class="el-icon-delete"
+                ></i>
               </div>
-              <div>
-                {{ item.desc }}
-              </div>
+              <div>{{ item.desc }}</div>
             </div>
           </div>
         </template>
@@ -175,26 +216,26 @@
   </div>
 </template>
 <script>
-import phoneNavBar from "./phoneNavBar";
-import wechatTitle from "./wechatTitle";
-import wechatFooter from "./wechatFooter";
+import phoneNavBar from './phoneNavBar';
+import wechatTitle from './wechatTitle';
+import wechatFooter from './wechatFooter';
 
 export default {
   components: {
     wechatTitle,
     wechatFooter,
-    phoneNavBar
+    phoneNavBar,
   },
   props: {
     list: {
       type: Array,
       default() {
         return [];
-      }
+      },
     },
     title: {
-      type: String
-    }
+      type: String,
+    },
   },
   watch: {
     list: {
@@ -202,12 +243,12 @@ export default {
         this.contentList = newVal;
       },
       deep: true,
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   data() {
     return {
-      contentList: []
+      contentList: [],
     };
   },
   mounted() {
@@ -217,8 +258,8 @@ export default {
   methods: {
     delContent(index) {
       this.contentList.splice(index, 1);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -288,7 +329,7 @@ export default {
     width: 24px;
     height: 24px;
     &::before {
-      content: "";
+      content: '';
       display: block;
       width: 5px;
       height: 5px;
@@ -297,7 +338,7 @@ export default {
       border-color: transparent #fff transparent transparent;
     }
     &::after {
-      content: "";
+      content: '';
       display: block;
       width: 8px;
       height: 8px;
@@ -323,7 +364,7 @@ export default {
     width: 24px;
     height: 24px;
     &::before {
-      content: "";
+      content: '';
       display: block;
       width: 5px;
       height: 5px;
@@ -332,7 +373,7 @@ export default {
       border-color: transparent transparent transparent#95ec69;
     }
     &::after {
-      content: "";
+      content: '';
       display: block;
       width: 8px;
       height: 8px;
