@@ -7,7 +7,7 @@
         ref="wechart"
       ></wechart>
       <div class="home-right p-l-ten">
-        <dialog-nar-bar></dialog-nar-bar>
+        <!-- <dialog-nar-bar></dialog-nar-bar> -->
         <dialog-wetchat-title v-model="title"></dialog-wetchat-title>
         <dialog-plate
           :role="1"
@@ -65,7 +65,7 @@ export default {
     wechart,
     dialogPlate,
     dialogWetchatTitle,
-    dialogNarBar,
+    // dialogNarBar,
   },
   data: function () {
     return {
@@ -238,7 +238,8 @@ export default {
       const newNode = node.cloneNode(true);
       newNode.style.height = node.scrollHeight + 'px';
       newNode.style.position = 'fixed';
-      newNode.style.left = 9999 + 'px';
+      newNode.style.left = 0 + 'px';
+      newNode.style.top = 9999 + 'px';
       newNode.style.transform = 'unset';
       document.body.appendChild(newNode);
 
