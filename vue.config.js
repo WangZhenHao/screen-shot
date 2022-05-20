@@ -80,12 +80,12 @@ module.exports = {
     // }
 
     // core-js库在项目中每个文件都会加载到，所有code-js的代码提出到chunk-vendors-xxx.js中
-    config.optimization.splitChunks.cacheGroups.vendors = {
-      name: "chunk-vendors",
-      test: /[\\/]node_modules[\\/]/,
-      priority: -10,
-      chunks: "all"
-    };
+    // config.optimization.splitChunks.cacheGroups.vendors = {
+    //   name: "chunk-vendors",
+    //   test: /[\\/]node_modules[\\/]/,
+    //   priority: -10,
+    //   chunks: "all"
+    // };
   }
   // css: {
   //   loaderOptions: {
