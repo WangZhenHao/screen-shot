@@ -1,6 +1,8 @@
 # screen-shot 微信截图生成网站
 
 链接：https://wangzhenhao.github.io/screen-shot/dist/index.html
+（生成截图之后，目前需要右键保存图片）
+
 
 ```
 
