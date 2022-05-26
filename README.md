@@ -4,6 +4,7 @@
 （生成截图之后，目前需要右键保存图片）
 
 ![图片](https://github.com/WangZhenHao/screen-shot/raw/master/images/1.jpg)
+![图片](https://github.com/WangZhenHao/screen-shot/raw/master/images/2.jpg)
 
 ```
 
@@ -12,26 +13,3 @@ http://www.12tool.com/wxduihua.html
 
 http://html2canvas.hertzen.com/documentation
 
-```
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
