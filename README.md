@@ -3,6 +3,7 @@
 链接：https://wangzhenhao.github.io/screen-shot/dist/index.html
 （生成截图之后，目前需要右键保存图片）
 
+![图片](https://github.com/WangZhenHao/screen-shot/raw/master/images/1.jpg)
 
 ```
 
